@@ -28,3 +28,11 @@ def attention_weights(query, keys):
 
 def context_vector(weights, values):
     return np.dot(weights, values)
+
+import numpy as np
+
+def late_fusion(audio_probs, video_probs, audio_weight=0.4, video_weight=0.6):
+    return audio_weight * audio_probs + video_weight * video_probs
+
+def early_fusion(audio_features, video_features):
+    return np.concatenate([audio_features.flatten(), video_features.flatten()])
