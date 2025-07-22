@@ -50,3 +50,16 @@ def frame_signal(signal, frame_len=512, hop=256):
     for i in range(0, len(signal) - frame_len, hop):
         frames.append(signal[i:i+frame_len])
     return np.array(frames)
+
+import numpy as np
+
+def extract_landmarks(frame, num_landmarks=68):
+    # Placeholder for facial landmark extraction
+    return np.zeros((num_landmarks, 2))
+
+def normalize_landmarks(landmarks, frame_shape):
+    h, w = frame_shape[:2]
+    normalized = landmarks.copy().astype(float)
+    normalized[:, 0] /= w
+    normalized[:, 1] /= h
+    return normalized
