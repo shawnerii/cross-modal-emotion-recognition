@@ -33,9 +33,10 @@ cd cross-modal-emotion-recognition
 ```
 
 ## 🚀 Usage
-	1.	Train Models
+
+1.	Train Models
 	•	DL_FER.py → Train on FER2013 dataset
 	•	DL_RAVDESS.py → Train on RAVDESS dataset
 	
-    2.	Run Inference UI
+2.	Run Inference UI
     python app.py
