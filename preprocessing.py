@@ -63,3 +63,14 @@ def normalize_landmarks(landmarks, frame_shape):
     normalized[:, 0] /= w
     normalized[:, 1] /= h
     return normalized
+
+import numpy as np
+
+def align_modalities(audio_features, video_features, audio_fps=16000, video_fps=25):
+    ratio = audio_fps / video_fps
+    aligned = []
+    for i in range(len(video_features)):
+        audio_idx = int(i * ratio)
+        if audio_idx < len(audio_features):
+            aligned.append((audio_features[audio_idx], video_features[i]))
+    return aligned
