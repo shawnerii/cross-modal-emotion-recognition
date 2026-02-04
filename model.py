@@ -131,3 +131,14 @@ class EmotionClassifier:
     def predict(self, features):
         proba = self.predict_proba(features)
         return EMOTIONS[np.argmax(proba)]
+
+import numpy as np
+
+def attention_weights(query, keys):
+    scores = np.dot(keys, query)
+    scores = scores - scores.max()
+    exp_scores = np.exp(scores)
+    return exp_scores / exp_scores.sum()
+
+def context_vector(weights, values):
+    return np.dot(weights, values)
